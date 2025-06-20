@@ -89,7 +89,6 @@ export default function Home() {
                 <a
                   href={downloadUrl}
                   download
-                  target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 w-full block text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition"
                 >
