@@ -86,7 +86,11 @@ export default function Home() {
               <p className="text-green-400 font-medium mb-3">{trackName}</p>
 
               <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-3">
-                <a href={downloadUrl} download>
+                <a 
+                    href={downloadUrl}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer">
                   ⬇️ Download WAV
                 </a>
               </Button>
