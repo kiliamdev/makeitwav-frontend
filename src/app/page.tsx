@@ -86,9 +86,13 @@ export default function Home() {
               <p className="text-green-400 font-medium mb-3">{trackName}</p>
 
               <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-3">
-                <a 
-                    href={downloadUrl}
-                    download>
+                <a
+                  href={downloadUrl}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 w-full block text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition"
+                >
                   ⬇️ Download WAV
                 </a>
               </Button>
