@@ -85,27 +85,13 @@ export default function Home() {
               <p className="text-sm text-zinc-400 mb-1">✔️ Converted track:</p>
               <p className="text-green-400 font-medium mb-3">{trackName}</p>
 
-                <Button
-                  onClick={async () => {
-                    try {
-                      const res = await fetch(downloadUrl);
-                      const blob = await res.blob();
-                      const urlObject = window.URL.createObjectURL(blob);
-                      const link = document.createElement('a');
-                      link.href = urlObject;
-                      link.download = trackName ? `${trackName}.wav` : 'track.wav';
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
-                      window.URL.revokeObjectURL(urlObject);
-                    } catch {
-                      alert('Download failed.');
-                    }
-                  }}
-                  className="mt-4 w-full"
-                >
+              <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-3">
+                <a 
+                    href={downloadUrl}
+                    download>
                   ⬇️ Download WAV
-                </Button>
+                </a>
+              </Button>
 
               <Button
                 onClick={handleReset}
