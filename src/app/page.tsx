@@ -12,7 +12,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [trackName, setTrackName] = useState('');
-  const [bitDepth, setBitDepth] = useState<'24' | '32'>('24');
 
   const handleConvert = async () => {
     setLoading(true);
@@ -24,7 +23,7 @@ export default function Home() {
       const res = await fetch('https://makeitwav-backend.onrender.com/convert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, bitDepth }),
+        body: JSON.stringify({ url }),
       });
 
       const data = await res.json();
@@ -71,27 +70,12 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mb-4 flex justify-center space-x-2">
-                <Button
-                  onClick={() => setBitDepth('24')}
-                  className={`w-1/2 ${bitDepth === '24' ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-zinc-200 hover:bg-zinc-300 text-black'}`}
-                >
-                  24-bit
-                </Button>
-                <Button
-                  onClick={() => setBitDepth('32')}
-                  className={`w-1/2 ${bitDepth === '32' ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-zinc-200 hover:bg-zinc-300 text-black'}`}
-                >
-                  32-bit
-                </Button>
-              </div>
-
               <Button
                 onClick={handleConvert}
                 disabled={loading || !url}
                 className="w-full bg-green-600 hover:bg-green-700 text-white"
               >
-                {loading ? 'Converting...' : `Convert to WAV (${bitDepth}-bit)`}
+                {loading ? 'Converting...' : 'Convert to WAV'}
               </Button>
             </>
           )}
@@ -106,7 +90,7 @@ export default function Home() {
                   href={downloadUrl}
                   download
                   rel="noopener noreferrer"
-                  className="mt-4 w-full block text-center text-white font-semibold py-2 px-4 rounded transition"
+                  className="mt-4 w-full block text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition"
                 >
                   ⬇️ Download WAV
                 </a>
@@ -115,7 +99,7 @@ export default function Home() {
               <Button
                 onClick={handleReset}
                 variant="secondary"
-                className="w-full bg-zinc-200 text-black hover:bg-zinc-300"
+                className="w-full bg-white text-black hover:bg-zinc-200"
               >
                 🔁 Convert Another
               </Button>
